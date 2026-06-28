@@ -19,3 +19,5 @@ app.listen(PORT, () => {
 
 const pool = require('./db');
 
+const authRoutes = require('./routes/authRoutes');
+app.use('/api/auth', authRoutes);
