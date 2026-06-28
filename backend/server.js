@@ -16,3 +16,6 @@ const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
    console.log(`Server radi na http://localhost:${PORT}`);
 })
+
+const pool = require('./db');
+
