@@ -21,3 +21,6 @@ const pool = require('./db');
 
 const authRoutes = require('./routes/authRoutes');
 app.use('/api/auth', authRoutes);
+
+const jobRouters = require('./routes/jobRoutes');
+app.use('/api/jobs', jobRouters);
