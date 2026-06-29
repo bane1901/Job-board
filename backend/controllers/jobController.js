@@ -78,4 +78,53 @@ const obrisiOglas = async (req, res) => {
     res.status(500).json({ message: 'Greska na serveru' });
   }
 };
-module.exports = {kreirajOglas, sviOglasi, izmijeniOglas,obrisiOglas};
+
+//pretraga oglasa
+const pretragaOglasa = async (req, res) => {
+  try {
+    const { q, category_id, location, job_type, salary_min } = req.query;
+
+    let sql = `SELECT jobs.*, users.name AS poslodavac, categories.name AS kategorija
+               FROM jobs
+               LEFT JOIN users ON jobs.employer_id = users.id
+               LEFT JOIN categories ON jobs.category_id = categories.id
+               WHERE 1=1`;
+    const params = [];
+
+    // Brza pretraga - po nazivu posla
+    if (q) {
+      sql += ` AND jobs.title LIKE ?`;
+      params.push(`%${q}%`);
+    }
+    // Detaljni filteri
+    if (category_id) {
+      sql += ` AND jobs.category_id = ?`;
+      params.push(category_id);
+    }
+    if (location) {
+      sql += ` AND jobs.location LIKE ?`;
+      params.push(`%${location}%`);
+    }
+    if (job_type) {
+      sql += ` AND jobs.job_type = ?`;
+      params.push(job_type);
+    }
+    if (salary_min) {
+      sql += ` AND jobs.salary_min >= ?`;
+      params.push(salary_min);
+    }
+
+    sql += ` ORDER BY jobs.created_at DESC`;
+
+    const [oglasi] = await pool.query(sql, params);
+    res.json(oglasi);
+  } catch (err) {
+    console.log('Greska pri pretrazi:', err.message);
+    res.status(500).json({ message: 'Greska na serveru' });
+  }
+};
+
+
+
+
+module.exports = {kreirajOglas, sviOglasi, izmijeniOglas,obrisiOglas, pretragaOglasa};
