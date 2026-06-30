@@ -4,7 +4,7 @@ const pool = require('../db');
 const kreirajOglas = async (req, res) => {
     try{
         const{employer_id,category_id,title,description,location,job_type,salary_min,salary_max} = req.body;
-
+        const logo = req.file ? req.file.filename : null;
         if(!title || !employer_id){
             return res.status(400).json({message:'Naslov i poslodavac su obavezni'});
 
@@ -15,6 +15,9 @@ const kreirajOglas = async (req, res) => {
              VALUES(?,?,?,?,?,?,?,?)`,
              [employer_id,category_id || null, title, description,location,job_type,salary_min,salary_max]
         );
+        if(logo){
+          await pool.query('UPDATE users SET logo = ? WHERE id = ?',[logo, employer_id]);
+        }
     res.status(201).json({message:'Oglas kreiran',jobId: result.insertId});
 
     }catch(err){
