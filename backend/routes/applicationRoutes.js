@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const upload = require('../middleware/upload');
-const {prijaviSe, prijaveZaOglas,promijeniStatus} = require('../controllers/applicationController');
+const { vjerujToken, dozvoliUloge } = require('../middleware/auth');
+const { prijaviSe, prijaveZaOglas, promijeniStatus } = require('../controllers/applicationController');
 
-//upload cv prima jedan fajl iz polja cv
-router.post('/', upload.single('cv'), prijaviSe);
-router.get('/job/:jobId', prijaveZaOglas);
-router.put('/:id/status', promijeniStatus);
+// Samo ulogovan kandidat se prijavljuje
+router.post('/', vjerujToken, dozvoliUloge('kandidat'), upload.single('cv'), prijaviSe);
+
+// Samo poslodavac/admin vide prijave i mijenjaju status
+router.get('/job/:jobId', vjerujToken, dozvoliUloge('poslodavac', 'admin'), prijaveZaOglas);
+router.put('/:id/status', vjerujToken, dozvoliUloge('poslodavac', 'admin'), promijeniStatus);
 
 module.exports = router;
