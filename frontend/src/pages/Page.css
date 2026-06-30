@@ -1,0 +1,76 @@
+.page{
+    padding: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+.oglas-kartica {
+  border: 1px solid #d3dce5;
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 16px;
+  background: #fff;
+}
+
+.oglas-kartica h3 {
+  margin: 0 0 6px 0;
+  color: #1a3a5c;
+}
+
+.oglas-kartica .firma {
+  color: #464646;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+}
+
+.oglas-kartica .detalji {
+  color: #3a3838;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+.forma{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 360px;
+}
+
+.forma input {
+  padding: 10px 12px;
+  border: 1px solid #c3ccd5;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.forma button {
+  padding: 11px;
+  background: #1a3a5c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.forma button:hover{
+  background: #244e7a;
+}
+
+.greska{
+  color: #b32434;
+  margin: 0;
+}
+
+.forma select {
+  padding: 10px 12px;
+  border: 1px solid #c3ccd5;
+  border-radius:8px;
+  font-size: 15px;
+}
+
+.uspjeh { 
+  color: #1a7a3a;
+  margin: 0;
+}
