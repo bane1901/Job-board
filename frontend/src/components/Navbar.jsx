@@ -14,9 +14,12 @@ function Navbar() {
  
   let desniDio;
 
-  if (user) {
+    if (user) {
     desniDio = (
       <div className="navbar-desno">
+        {(user.role === 'poslodavac' || user.role === 'admin') && (
+          <Link to="/dodaj-oglas">Dodaj oglas</Link>
+        )}
         <span className="pozdrav">Zdravo, {user.name}</span>
         <button onClick={odjava} className="odjava-btn">Odjava</button>
       </div>
