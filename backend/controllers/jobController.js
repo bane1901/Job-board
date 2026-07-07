@@ -127,7 +127,28 @@ const pretragaOglasa = async (req, res) => {
   }
 };
 
+//vrati jedano oglas po id-u
+const jedanOglas = async(req,res) => {
+  try{
+    const { id } = req.params;
+    const [oglasi] = await pool.query(
+        `SELECT jobs.*, users.name AS poslodavac, users.logo,
+         categories.name AS kategorija
+         FROM jobs 
+         LEFT JOIN users ON jobs.employer_id = users.id
+         LEFT JOIN categories ON jobs.category_id = categories.id
+         WHERE jobs.id = ?`,
+         [id]
+    );
+    if(oglasi.length === 0){
+      return res.status(404).json({ message: 'Oglas nije pronadjen' });
+    }
+    res.json(oglasi[0]);
+    }catch (err){
+      res.status(500).json({ message: 'Greska na serveru' });
+    }
+};
 
 
 
-module.exports = {kreirajOglas, sviOglasi, izmijeniOglas,obrisiOglas, pretragaOglasa};
+module.exports = {kreirajOglas, sviOglasi, izmijeniOglas,obrisiOglas, pretragaOglasa, jedanOglas};

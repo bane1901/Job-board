@@ -74,3 +74,100 @@
   color: #1a7a3a;
   margin: 0;
 }
+
+.forma textarea {
+  padding: 10px 12px;
+  border: 1px solid #c3ccd5;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  resize: vertical;
+
+}
+
+.pretraga {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f0f4f8;
+  border-radius: 10px;
+}
+
+.pretraga input,
+.pretraga select {
+  padding: 9px 12px;
+  border: 1px solid #c3ccd5;
+  border-radius: 8px;
+  font-size: 14px
+}
+
+.pretraga button {
+  padding: 9px 18px;
+  background: #1a3a5c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.pretraga button:hover {
+  background: #244e7a;
+}
+
+.pretraga .reset-btn {
+  background: #7a8794;
+}
+
+.pretraga .reset-btn:hover {
+  background: #5f6b77;
+}
+.nazad-btn {
+  background: none;
+  border: none;
+  color: #1a3a5c;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 16px;
+  padding: 0;
+}
+
+.detalji-oglas {
+  border: 1px solid #d3dce5;
+  border-radius: 10px;
+  padding: 24px 28px;
+  background: #fff;
+}
+
+.oglas-link {
+  color: #1a3a5c;
+  text-decoration: none;
+}
+
+.oglas-link:hover {
+  text-decoration: underline;
+}
+
+.prijavi-btn {
+  margin-top: 20px;
+  padding: 12px 28px;
+  background: #1a7a3a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.prijavi-btn:hover {
+  background: #15682f;
+}
+
+.file-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #555;
+}

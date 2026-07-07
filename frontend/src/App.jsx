@@ -4,6 +4,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DodajOglas from './pages/DodajOglas';
+import DetaljiOglasa from './pages/DetaljiOglasa';
+import Prijava from './pages/Prijava';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dodaj-oglas" element={<DodajOglas />} />
+        <Route path="/oglas/:id" element={<DetaljiOglasa />} />
+        <Route path="/prijava/:jobId" element={<Prijava />} />
       </Routes>
     </BrowserRouter>
   );
